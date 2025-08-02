@@ -25,5 +25,14 @@ jobs:
       - name: Build (si aplica)
         run: npm run build || echo "No build step"
 
-      - name: Start app (solo para prueba)
-        run: node mercadoPago.js
+      # Aquí falta el paso de deploy, ejemplo con Koyeb CLI:
+      #- name: Install Koyeb CLI
+      #  run: curl -sSL https://cli.koyeb.com/install.sh | sh
+      #
+      #- name: Authenticate Koyeb CLI
+      #  env:
+      #    KOYEB_API_TOKEN: ${{ secrets.KOYEB_API_TOKEN }}
+      #  run: koyeb login --api-token $KOYEB_API_TOKEN
+      #
+      #- name: Deploy to Koyeb
+      #  run: koyeb service update --service your-service-name --image your-image-name:tag
