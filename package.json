@@ -5,7 +5,7 @@
   "main": "mercadoPago.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"No tests yet\"",
     "start": "node mercadoPago.js",
     "dev": "nodemon mercadoPago.js"
   },
