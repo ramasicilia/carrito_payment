@@ -1,4 +1,5 @@
-name: Deploy Node.js app to Azure
+
+name: Build and Deploy
 
 on:
   push:
@@ -16,15 +17,13 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '22'
+          node-version: '22.17.0'
 
       - name: Install dependencies
         run: npm install
 
-      - name: Deploy to Azure Web App
-        uses: azure/webapps-deploy@v2
-        with:
-          app-name: carritoPayment
-          slot-name: Production
-          publish-profile: ${{ secrets.AZURE_PUBLISH_PROFILE }}
-          package: .
+      - name: Build (si aplica)
+        run: npm run build || echo "No build step"
+
+      - name: Start app (solo para prueba)
+        run: node mercadoPago.js
