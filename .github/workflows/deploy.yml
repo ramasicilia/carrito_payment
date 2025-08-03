@@ -1,5 +1,5 @@
 
-name: Build and Deploy
+name: Build and Deploy to Azure
 
 on:
   push:
@@ -25,14 +25,9 @@ jobs:
       - name: Build (si aplica)
         run: npm run build || echo "No build step"
 
-      # Aquí falta el paso de deploy, ejemplo con Koyeb CLI:
-      #- name: Install Koyeb CLI
-      #  run: curl -sSL https://cli.koyeb.com/install.sh | sh
-      #
-      #- name: Authenticate Koyeb CLI
-      #  env:
-      #    KOYEB_API_TOKEN: ${{ secrets.KOYEB_API_TOKEN }}
-      #  run: koyeb login --api-token $KOYEB_API_TOKEN
-      #
-      #- name: Deploy to Koyeb
-      #  run: koyeb service update --service your-service-name --image your-image-name:tag
+      - name: 'Deploy to Azure Web App'
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: TU_NOMBRE_DE_APP
+          slot-name: 'production'
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
